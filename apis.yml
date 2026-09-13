@@ -1,8 +1,26 @@
 aid: ai-therapeutics
 name: AI Therapeutics
-description: 'AI Therapeutics is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  AI Therapeutics (now Orphai Therapeutics) is a clinical-stage biopharmaceutical company founded in
+  Guilford, Connecticut by Jonathan Rothberg as LAM Therapeutics, renamed AI Therapeutics, and renamed
+  again to OrphAI Therapeutics in September 2023. It built an internal deep-learning platform that
+  synthesized public and proprietary drug and disease data to match existing chemical entities to new
+  indications, and used it to advance a rare-disease and pulmonary pipeline — LAM-001, an inhaled
+  formulation of sirolimus (rapamycin) targeting mTOR-driven pulmonary disease, plus the earlier
+  PIKfyve inhibitor programs LAM-002 and LAM-003. Quince Therapeutics (Nasdaq: QNCX) acquired Orphai
+  in May 2026 and now runs it as a subsidiary. The AI platform is an internal drug-discovery tool, not
+  a product: the company operates no developer program, publishes no API, SDK or machine-readable
+  contract, and its public web presence is a single-page corporate site.
 url: https://raw.githubusercontent.com/api-evangelist/ai-therapeutics/refs/heads/main/apis.yml
+image: https://orphai-therapeutics.com/wp-content/uploads/2026/07/orphai-logo-new.png
+x-status: acquired
+x-acquired-by: quince-therapeutics
+x-acquired-date: '2026-05-18'
+x-status-note: >-
+  Renamed from LAM Therapeutics to AI Therapeutics, then to OrphAI Therapeutics in September 2023.
+  Acquired by Quince Therapeutics (Nasdaq: QNCX) on 2026-05-18 and now operated as a subsidiary; the
+  live site orphai-therapeutics.com carries the acquisition announcement and has been reduced to a
+  single page.
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
@@ -12,6 +30,13 @@ created: '2026-09-13'
 modified: '2026-09-13'
 tags:
 - Company
+- Biotechnology
+- Pharmaceuticals
+- Life Sciences
+- Drug Discovery
+- Artificial Intelligence
+- Clinical Trials
+- Rare Disease
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -20,4 +45,31 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/ai-therapeutics_stock/
+  url: https://orphai-therapeutics.com/
+- type: GitHubOrganization
+  url: https://github.com/AI-Therapeutics
+- type: DomainSecurity
+  url: security/ai-therapeutics-domain-security.yml
+x-enrichment:
+  date: '2026-09-13'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    AI Therapeutics is a clinical-stage biopharmaceutical company (now Orphai Therapeutics, a Quince
+    Therapeutics subsidiary) whose product is an inhaled rapamycin drug candidate, not software — its
+    only live host, orphai-therapeutics.com, is a one-page WordPress corporate site that 404s every
+    /.well-known/, OpenAPI and llms.txt path, and its GitHub organization has zero public repositories.
+  evidence:
+  - url: https://orphai-therapeutics.com/.well-known/agent-card.json
+    status: 404
+  - url: https://orphai-therapeutics.com/openapi.json
+    status: 404
+  - url: https://orphai-therapeutics.com/llms.txt
+    status: 404
+  - url: https://api.github.com/users/AI-Therapeutics/repos
+    status: 200
+  checked: '2026-09-13'

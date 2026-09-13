@@ -1,0 +1,98 @@
+generated: '2026-09-13'
+method: probed
+source: live HTTPS probe of every host this record knows
+note: >-
+  Recorded absence. Every named /.well-known/ path plus the domain-root apis.json/apis.yml paths were
+  probed on the company's live corporate host and on the legacy aitherapeutics.com domain. The live
+  host (orphai-therapeutics.com, a single-page WordPress site) returns 404 for all of them, and its
+  negative control also returns 404, so the 404s are real. The legacy domain aitherapeutics.com is a
+  parked lander that answers HTTP 200 with the same 114-byte JavaScript redirect stub for EVERY path,
+  including the negative control — every 200 on that host is a catch-all, not a document. No WellKnown
+  or SecurityTxt pointer is emitted: hit_count is 0.
+hit_count: 0
+hosts:
+- host: https://orphai-therapeutics.com
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/ai-therapeutics-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 1674
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+- host: https://www.orphai-therapeutics.com
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/ai-therapeutics-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 1674
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 301}
+  - {path: /.well-known/oauth-protected-resource, status: 301}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 301}
+- host: https://aitherapeutics.com
+  note: >-
+    Legacy domain, parked. Answers 200 with an identical 114-byte JS redirect stub for every path
+    probed, including the negative control, so no 200 here is a document.
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/ai-therapeutics-negative-control-7f3ab91c.json
+    status: 200
+    bytes: 114
+    body: catch-all JavaScript redirect stub to /lander
+  documents:
+  - {path: /.well-known/security.txt, status: 200, discarded: catch-all}
+  - {path: /.well-known/openid-configuration, status: 200, discarded: catch-all}
+  - {path: /.well-known/oauth-authorization-server, status: 200, discarded: catch-all}
+  - {path: /.well-known/oauth-protected-resource, status: 200, discarded: catch-all}
+  - {path: /.well-known/api-catalog, status: 200, discarded: catch-all}
+  - {path: /.well-known/ai-plugin.json, status: 200, discarded: catch-all}
+  - {path: /.well-known/agent-card.json, status: 200, discarded: catch-all}
+  - {path: /.well-known/agent.json, status: 200, discarded: catch-all}
+  - {path: /.well-known/aauth-resource.json, status: 200, discarded: catch-all}
+  - {path: /.well-known/apis.json, status: 200, discarded: catch-all}
+  - {path: /apis.json, status: 200, discarded: catch-all}
+  - {path: /apis.yml, status: 200, discarded: catch-all}
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery, run against every host this record knows. No baseURL and no OpenAPI
+    servers[] host exist because the record carries no APIs, so the host set is the corporate web
+    presence. Nothing parsed as OpenAPI, Swagger, GraphQL SDL, MCP tools/list, OGC capabilities or an
+    A2A agent card.
+  probes:
+  - {url: 'https://orphai-therapeutics.com/openapi.json', status: 404}
+  - {url: 'https://orphai-therapeutics.com/openapi.yaml', status: 404}
+  - {url: 'https://orphai-therapeutics.com/swagger.json', status: 404}
+  - {url: 'https://orphai-therapeutics.com/api-docs', status: 404}
+  - {url: 'https://orphai-therapeutics.com/llms.txt', status: 404}
+  - {url: 'https://www.orphai-therapeutics.com/openapi.json', status: 404}
+  - {url: 'https://www.orphai-therapeutics.com/swagger.json', status: 404}
+  - {url: 'https://api.github.com/users/AI-Therapeutics/repos', status: 200, result: 'organization exists, zero public repositories'}
+  - {url: 'https://api.github.com/users/orphai/repos', status: 200, result: 'organization exists, zero public repositories'}
+  incidental_surface:
+    url: https://orphai-therapeutics.com/wp-json/
+    status: 200
+    content_type: application/json
+    note: >-
+      The default WordPress REST API index the site's CMS exposes automatically. It is generic
+      WordPress plumbing on a marketing site, not a product API this company designed, documented or
+      supports, so it is recorded here as an observation and NOT registered as a contract.

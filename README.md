@@ -64,5 +64,23 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-AI Therapeutics is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/ai-therapeutics_stock/
+AI Therapeutics — now **Orphai Therapeutics**, a subsidiary of Quince Therapeutics (Nasdaq: QNCX) —
+is a clinical-stage biopharmaceutical company in Guilford, Connecticut. Founded by Jonathan Rothberg
+as LAM Therapeutics, it was renamed AI Therapeutics and then OrphAI Therapeutics in September 2023,
+and was acquired by Quince on 18 May 2026. Its deep-learning platform matched existing chemical
+entities to new indications and produced a rare-disease and pulmonary pipeline led by LAM-001, an
+inhaled formulation of sirolimus (rapamycin) targeting mTOR-driven pulmonary disease, alongside the
+earlier PIKfyve inhibitors LAM-002 and LAM-003.
+
+**No API surface.** The AI platform is an internal drug-discovery tool, not a product. A full
+enrichment pass on 2026-09-13 found no developer program, no documentation, and no machine-readable
+contract of any kind: every `/.well-known/` path, `openapi.json`/`swagger.json`, `llms.txt` and
+`apis.json` probe on the live host returned 404 (with a negative control that also returned 404), the
+legacy `aitherapeutics.com` domain is a parked catch-all that answers 200 for every path including the
+control, and the company's GitHub organization has zero public repositories. The only machine-readable
+surface on the site is the default WordPress REST index its CMS exposes automatically, which is not a
+product API and is recorded as an observation rather than a contract.
+
+- Website: https://orphai-therapeutics.com/
+- GitHub organization: https://github.com/AI-Therapeutics
+- Secondary-market listing: https://forgeglobal.com/ai-therapeutics_stock/
